@@ -6,9 +6,9 @@ if (window.customElements && window.customElements.define) {
     }
 
     connectedCallback() {
-      // volano vzdy kdyz je element vlozen do DOM
+      // Called when the element is inserted into the DOM
            
-      // po load eventu nastavi pro vsechny baskety na vsech accepted a not accepted objektech draggable true
+      // Set up drag-and-drop functionality after page load
       document.addEventListener("DOMContentLoaded", initiateDraggables);
       this.addEventListener("drop", handleDrop);
       this.addEventListener("dragover", handleDragOver);
@@ -19,14 +19,14 @@ if (window.customElements && window.customElements.define) {
     }
 
     disconnectedCallback() {
-      //spusteno, kdyz se element odstrani ze stranky
+      // Called when the element is removed from the page
       document.removeEventListener("DOMContentLoaded", initiateDraggables);
       this.removeEventListener("drop", handleDrop);
       this.removeEventListener("dragover", handleDragOver);
     }
     
     attributeChangedCallback() {
-    // volano vzdy, kdyz se zmeni nejaky atribut elementu
+      // Called when any attribute of the element changes
     }
 
     static get observedAttributes() {
@@ -35,8 +35,10 @@ if (window.customElements && window.customElements.define) {
   } // konec definice cele tridy
   
   
-  // Ostatni funkce komponenty
+  // Helper functions for drag-and-drop functionality
+  
   function initiateDraggables() {
+    // Initialize all draggable items for each basket on the page
     const DaDBaskets2 = document.querySelectorAll("dad-basket2");
     DaDBaskets2.forEach((DaDBasket2) => {
       let draggables = parseIds(DaDBasket2, "acceptedIds");
@@ -47,6 +49,7 @@ if (window.customElements && window.customElements.define) {
   }
 
   function parseIds(el, attrName) {
+    // Parse comma-separated IDs from an element's attribute
     const raw = el.getAttribute(attrName);
     if (!raw) return [];
     return raw
@@ -56,11 +59,11 @@ if (window.customElements && window.customElements.define) {
   }
   
   function initiateOneDraggable(draggable) {
+    // Set up drag functionality for a single draggable item
     if(document.getElementById(draggable)) {
       const d = document.getElementById(draggable);
-      // Pokud se jedna o uzivatelsky element nastavi to draggable pro vlozeny nativni element
-      // Take to k nemu povesi udalosti pro dragging, ale pouzije id nadrizeneho elementu
-      // pro dataTransfer takze existujici logika basketu bude fungovat
+      // If element is a custom component, use its native element wrapper
+      // This ensures proper drag-and-drop behavior with custom elements
       let targetEl = d;
       if (d.nativeElement) targetEl = d.nativeElement;
 
@@ -119,11 +122,14 @@ if (window.customElements && window.customElements.define) {
   }
 
   function handleDrop(e) {
+    // Handle the drop event and process the dropped item
     const dropped = document.getElementById(e.dataTransfer.getData("text"));
     processDropTarget(e.target, dropped, e);
   }
 
   function processDropTarget(target, dropped, e) {
+    // Determine whether the dropped item is accepted or rejected by the target basket
+    // and apply the appropriate visualization
     switch (isAcceptedOrRejectedOrNone(dropped, target)) {
       case "accepted":
           if (target.getAttribute("showAccepted")) resultVisualisation(target, dropped, target.getAttribute("showAccepted"), e);
@@ -147,6 +153,7 @@ if (window.customElements && window.customElements.define) {
   }
 
   function isAcceptedOrRejectedOrNone(dropped,basket) {
+    // Check if the dropped item is in the basket's accepted or rejected list
     const ac = parseIds(basket, "acceptedIds");
     const re = parseIds(basket, "rejectedIds");
     if (ac.includes(dropped.id)) return "accepted";
@@ -155,6 +162,8 @@ if (window.customElements && window.customElements.define) {
   }
 
   function resultVisualisation(t,o,m,e) {
+    // Apply visual effect to the dropped object based on the specified mode
+    // Parameters: t=target basket, o=dropped object, m=visualization mode, e=drag event
     if (m == "Insert") {
       o.style.position = "static";  
       t.appendChild(o);
@@ -215,6 +224,7 @@ if (window.customElements && window.customElements.define) {
   }
 
   function handleTouchMove(e) {
+    // Update the position of the dragged element during touch movement
     if (!_dadTouchState) return;
     if (e.touches.length !== 1) return;
     const touch = e.touches[0];
@@ -231,6 +241,7 @@ if (window.customElements && window.customElements.define) {
   }
 
   function handleTouchEnd(e) {
+    // Process the end of a touch drag operation and drop the item if over a valid basket
     if (!_dadTouchState) return;
     const touch = (e.changedTouches && e.changedTouches[0]) || null;
     const host = _dadTouchState.host;
@@ -268,6 +279,7 @@ if (window.customElements && window.customElements.define) {
   }
 
   function findBasketFromPoint(clientX, clientY) {
+    // Find the dad-basket2 element at the given screen coordinates
     let el = document.elementFromPoint(clientX, clientY);
     while (el) {
       if (el.tagName && el.tagName.toLowerCase() === "dad-basket2") return el;
