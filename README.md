@@ -13,7 +13,7 @@ A custom HTML element component for implementing drag-and-drop functionality wit
 
 ## Installation
 
-Create ZIP archive from both files (manifest.json and DaDVasketV2.js) and use common import/install method in Google Web Designer project
+Create one ZIP archive from both files (manifest.json and DaDVasketV2.js) and use common import/install method in Google Web Designer project:
 -> In Components panel search for Custom Components, hit PLUS button and select created zip in file explorer dialog.
 
 ## Usage
@@ -32,10 +32,10 @@ Place DaDBasket component into scene with mouse and in Properties panel search f
 
 ## Events
 
-- **acceptedDropped** - Fired when an accepted item is dropped into the basket
-- **rejectedDropped** - Fired when a rejected item is dropped into the basket
+- **Object was accepted** - Fired when an accepted item is dropped into the basket
+- **Object was rejected** - Fired when a rejected item is dropped into the basket
 
-Events could fire any action provided by project creator depending on other object placed in scene including CSS definitions or custom functions.
+Events could fire any action provided by gwd event wizard depending on other object placed in scene including CSS definitions or custom javascript functions.
 
 ## Browser Support
 
