@@ -1,0 +1,78 @@
+{
+  "name": "Drag and Drop Basket v2.1",
+  "type": "dad-basket2",
+  "tagName": "dad-basket2",
+  "version": 2.1,
+  "customElementsVersion": 1,
+  "description": "Baskets for dragging and putting allowed (or rejecting disallowed) objects in. Using Drag and Drop API",
+  "files": {
+    "js": [
+      "DaDBasketV2.js"
+    ]
+  },
+  "attributes": [
+      {
+        "name": "acceptedIds",
+        "label": "Accepted IDs",
+        "type": "string",
+        "description": "IDs separated by commas",
+        "optional": false 
+      },
+      {
+         "name": "rejectedIds",
+         "label": "Rejected IDs",
+         "type": "string",
+         "description": "IDs separated by commas",
+         "optional": false 
+      },
+      {
+         "name": "showAccepted",
+         "label": "Accept visualisation",
+         "type": "string",
+         "description": "Visualising accepting objects",
+         "gwdSpecific": {
+            "type": "dropdown",
+            "items": ["Insert", "Stay", "Stay Forever", "Return", "Vanish"]
+         } 
+      },
+      {
+        "name": "showRejected",
+        "label": "Reject visualisation",
+        "type": "string",
+        "description": "How to visualise rejecting objects",
+        "gwdSpecific": {
+           "type": "dropdown",
+           "items": ["Insert", "Stay", "Stay Forever", "Return", "Vanish"]
+        } 
+      },
+      {
+        "name": "showWrongBasket",
+        "label": "Dropped to wrong basket",
+        "type": "string",
+        "description": "How to visualise wrong basket dropping",
+        "gwdSpecific": {
+           "type": "dropdown",
+           "items": ["Ignore", "Event"]
+        } 
+      }
+   ],
+  "events": [
+   {
+    "name": "acceptedDropped",
+    "label": "Object was accepted",
+    "description": "Basket accepted object",
+    "parameters" : [
+     ]
+   },
+   {
+    "name": "rejectedDropped",
+    "label": "Object was rejected",
+    "description": "Basket rejected object",
+    "parameters" : [
+    ]
+   }
+  ],
+  "methods": [
+  ],
+  "nestable": false
+}
