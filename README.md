@@ -22,13 +22,13 @@ Place DaDBasket component into scene with mouse and in Properties panel search f
 
 ## Attributes
 
-| Attribute                 | Type   | Description                                                          |
-|--------- -----------------|--------|----------------------------------------------------------------------|
-| `Accepted Ids`            | string | Comma-separated list of element IDs accepted by this basket          |
-| `Rejected Ids`            | string | Comma-separated list of element IDs rejected by this basket          |
-| `Accept Visualisation`    | string | Accepted object would: Insert, Stay, Stay Forever, Return, Vanish    |
-| `Reject Visualisation `   | string | Rejected object would: Insert, Stay, Stay Forever, Return, Vanish    |
-| `Dropped to wrong basket` | string | Behavior for wrong basket drops: Ignore, Event                       |
+| Attribute | Type | Description |
+|-----------|------|-------------|
+| `acceptedIds` | string | Comma-separated list of element IDs accepted by this basket |
+| `rejectedIds` | string | Comma-separated list of element IDs rejected by this basket |
+| `showAccepted` | string | Accepted object visualization: Insert, Stay, Stay Forever, Return, Vanish |
+| `showRejected` | string | Rejected object visualization: Insert, Stay, Stay Forever, Return, Vanish |
+| `showWrongBasket` | string | Behavior for wrong basket drops: Ignore, Event |
 
 ## Events
 
