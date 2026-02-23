@@ -1,4 +1,4 @@
-# Drag and Drop Basket v2.1
+# Drag and Drop Basket v2.1 for Google Web Designer
 
 A custom HTML element component for implementing drag-and-drop functionality with basket acceptance/rejection of objects. Uses the native Drag and Drop API with support for touch devices.
 
