@@ -32,7 +32,7 @@ if (window.customElements && window.customElements.define) {
     static get observedAttributes() {
     }
     
-  } // konec definice cele tridy
+  } // End of class definition
   
   
   // Helper functions for drag-and-drop functionality
