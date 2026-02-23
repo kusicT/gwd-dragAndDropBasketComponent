@@ -13,12 +13,12 @@ A custom HTML element component for implementing drag-and-drop functionality wit
 
 ## Installation
 
-Create one ZIP archive from both files (manifest.json and DaDVasketV2.js) and use common import/install method in Google Web Designer project:
--> In Components panel search for Custom Components, hit PLUS button and select created zip in file explorer dialog.
+Create one ZIP archive from both files (manifest.json and DaDBasketV2.js) and use common import/install method in **Google Web Designer** project:
+-> In **Components** panel search for **Custom Elements**, hit PLUS button and select created zip in file explorer dialog.
 
 ## Usage
 
-Place DaDBasket component into scene with mouse and in Properties panel search for DaDBasket attributes.
+Place DaDBasket component into scene with mouse and in **Properties** panel search for DaDBasket attributes.
 
 ## Attributes
 
@@ -32,7 +32,7 @@ Place DaDBasket component into scene with mouse and in Properties panel search f
 
 ## Accept/Reject visualisation
 
-- **Insert** - dropped object would be inserted (as child) to drop basket
+- **Insert** - dropped object would be inserted (as child) to drop basket, unable to drag again
 - **Stay** - dropped object would stay exactly where dropped, still able to be dragged later
 - **Stay Forever** - dropped object would stay exactly where dropped, unable to be dragged again
 - **Return** - dropped object would return to previous position
@@ -49,6 +49,10 @@ When **Ignore** attribute set, no event dispatched.
 - **Object was rejected** - Fired when a rejected item is dropped into the basket
 
 Events could fire any action provided by gwd event wizard, depending on other object placed in scene, including CSS definitions or custom javascript functions.
+
+## Special remarks
+
+SVG objects should be put into DIV first (Google Web Design - **WRAP** function) to become draggable (Drag and Drop API limtation).
 
 ## Browser Support
 
