@@ -30,12 +30,25 @@ Place DaDBasket component into scene with mouse and in Properties panel search f
 | `Reject Visualisation `   | string | Rejected object would: Insert, Stay, Stay Forever, Return, Vanish    |
 | `Dropped to wrong basket` | string | Behavior for wrong basket drops: Ignore, Event                       |
 
+## Accept/Reject visualisation
+
+- **Insert** - dropped object would be inserted (as child) to drop basket
+- **Stay** - dropped object would stay exactly where dropped, still able to be dragged later
+- **Stay Forever** - dropped object would stay exactly where dropped, unable to be dragged again
+- **Return** - dropped object would return to previous position
+- **Vanish** - dropped object would disappear
+
+## Wrong basket
+
+When object is dropped to wrong basket with attribute **Event** set, the event **Object was rejected** is dispatched.
+When **Ignore** attribute set, no event dispatched.
+
 ## Events
 
 - **Object was accepted** - Fired when an accepted item is dropped into the basket
 - **Object was rejected** - Fired when a rejected item is dropped into the basket
 
-Events could fire any action provided by gwd event wizard depending on other object placed in scene including CSS definitions or custom javascript functions.
+Events could fire any action provided by gwd event wizard, depending on other object placed in scene, including CSS definitions or custom javascript functions.
 
 ## Browser Support
 
